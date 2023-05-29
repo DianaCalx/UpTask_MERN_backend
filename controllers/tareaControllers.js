@@ -66,7 +66,8 @@ const actualizarTarea = async (req, res) => {
 
   try {
     // Actualizar la tarea
-    const tareaActualizar = await Tarea.findByIdAndUpdate(id, req.body, { new: true });
+    const tareaActualizar = await Tarea.findByIdAndUpdate(id, req.body, { new: true }).populate('completado');
+    console.log(tareaActualizar)
     res.json(tareaActualizar);
   } catch (error) {
     console.log(error)
